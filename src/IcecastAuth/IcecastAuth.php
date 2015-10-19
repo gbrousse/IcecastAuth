@@ -203,6 +203,7 @@ class IcecastAuth {
         return call_user_func($function,$parameters);
     }
     
+    
     /**
      * Set the error and return false
      * @param string $error
