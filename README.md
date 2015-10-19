@@ -1,2 +1,2 @@
 # IcecastAuth
-PHP authentification librairy to use with icecast listeners Authentication via the URL (http://icecast.org/docs/icecast-2.4.1/auth.html)
+PHP librairy used to authenticate listeners via Icecast authentication via the URL system (http://icecast.org/docs/icecast-2.4.1/auth.html)
