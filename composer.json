@@ -1,0 +1,21 @@
+{
+    "name": "gbrousse/icecast-auth",
+    "description": "PHP librairy used to authenticate listeners via Icecast authentication via the URL system",
+    "homepage": "https://github.com/gbrousse/IcecastAuth",
+    "type": "library",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Gregory Brousse",
+            "email": "pro@gregory-brousse.fr",
+            "homepage": "http://gregory-brousse.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {"IcecastAuth\\": "src/IcecastAuth"}
+    }
+}
