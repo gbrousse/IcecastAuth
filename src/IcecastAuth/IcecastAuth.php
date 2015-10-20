@@ -74,7 +74,7 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAuthCallback($function){
-        if(!is_callable($function))return $this->altOnError( $function.' : Unknown function');
+        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
         $this->authFunction = $function;
         return true;
     }
@@ -87,8 +87,9 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAuthErrorCallback($function){
-        if(!is_callable($function))return $this->altOnError($function.' : Unknown function');
+        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
         $this->authErrorFunction = $function;
+        return true;
     }
     
     /**
@@ -99,8 +100,9 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAddListenerCallback($function){
-        if(!is_callable($function))return $this->altOnError($function.' : Unknown function');
+        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
         $this->addListenerFunction = $function;
+        return true;
     }
 
     /**
@@ -111,8 +113,9 @@ class IcecastAuth {
      * @return boolean
      */
     public function setRemoveListenerCallback($function){
-        if(!is_callable($function))return $this->altOnError($function.' : Unknown function');
+        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
         $this->removeListenerFunction = $function;
+        return true;
     }
     
     /**
@@ -123,8 +126,9 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAddMountCallback($function){
-        if(!is_callable($function))return $this->altOnError($function.' : Unknown function');
+        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
         $this->addMountFunction = $function;
+        return true;
     }
     
     /**
@@ -135,8 +139,9 @@ class IcecastAuth {
      * @return boolean
      */
     public function setRemoveMountCallback($function){
-        if(!is_callable($function))return $this->altOnError($function.' : Unknown function');
+        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
         $this->removeMountFunction = $function;
+        return true;
     }
     
     /**

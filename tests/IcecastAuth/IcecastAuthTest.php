@@ -1,17 +1,22 @@
 <?php
 
-namespace IcecastAuth;
+use IcecastAuth\IcecastAuth;
 
-class IcecastAuthTest extends \PHPUnit_Framework_TestCase {
+class IcecastAuthTest extends PHPUnit_Framework_TestCase {
  
-  public function testAddAuthFunc()
-  {
-    $iceAuth = new IcecastAuth();
-    $this->assertTrue($iceAuth->setAuthCallback('testFunc'),$iceAuth->getLastError());
-    $this->assertTrue($iceAuth->setAuthCallback(array( new testClass(),'testFunc')),$iceAuth->getLastError());
-    $this->assertFalse($iceAuth->setAuthCallback('toto'),$iceAuth->getLastError());
-    $this->assertFalse($iceAuth->setAuthCallback(array( new testClass(),'toto')),$iceAuth->getLastError());
+public function testTestSetCallbackFunc()
+{
+    $setMethods = array('setAuthCallback','setAuthErrorCallback','setAddListenerCallback','setRemoveListenerCallback','setAddMountCallback','setRemoveMountCallback');
+    
+    foreach ($setMethods as $method) {
+        $iceAuth = new IcecastAuth();
+        $this->assertTrue($iceAuth->$method('testFunc'),$method.'-func-OK : '.$iceAuth->getLastError());
+        $this->assertTrue($iceAuth->$method(array( new testClass(),'testFunc')),$method.'-method-OK : '.$iceAuth->getLastError());
+        $this->assertFalse($iceAuth->$method('toto'),$method.'-func-NOK : '.$iceAuth->getLastError());
+        $this->assertFalse($iceAuth->$method(array( new testClass(),'toto')),$method.'-method-NOK : '.$iceAuth->getLastError());
     }
+    
+}
   
   
  
