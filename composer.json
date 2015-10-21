@@ -1,6 +1,7 @@
 {
     "name": "gbrousse/icecast-auth",
     "description": "PHP librairy used to authenticate listeners via Icecast authentication via the URL system",
+    "keywords":"icecast","authenticate","authetication","listeners control"
     "homepage": "https://github.com/gbrousse/IcecastAuth",
     "type": "library",
     "license": "LGPL-3.0",
