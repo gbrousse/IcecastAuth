@@ -74,9 +74,7 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAuthCallback($function){
-        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
-        $this->authFunction = $function;
-        return true;
+        return $this->setCallback('authFunction', $function);
     }
     
     /**
@@ -87,9 +85,8 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAuthErrorCallback($function){
-        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
-        $this->authErrorFunction = $function;
-        return true;
+        return $this->setCallback('authErrorFunction', $function);
+       
     }
     
     /**
@@ -100,9 +97,8 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAddListenerCallback($function){
-        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
-        $this->addListenerFunction = $function;
-        return true;
+        return $this->setCallback('addListenerFunction', $function);
+        
     }
 
     /**
@@ -113,9 +109,8 @@ class IcecastAuth {
      * @return boolean
      */
     public function setRemoveListenerCallback($function){
-        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
-        $this->removeListenerFunction = $function;
-        return true;
+        return $this->setCallback('removeListenerFunction', $function);
+       
     }
     
     /**
@@ -126,9 +121,8 @@ class IcecastAuth {
      * @return boolean
      */
     public function setAddMountCallback($function){
-        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
-        $this->addMountFunction = $function;
-        return true;
+        return $this->setCallback('addMountFunction', $function);
+       
     }
     
     /**
@@ -139,8 +133,25 @@ class IcecastAuth {
      * @return boolean
      */
     public function setRemoveMountCallback($function){
-        if(!is_callable($function))return $this->altOnError(serialize ($function).' : Unknown function');
-        $this->removeMountFunction = $function;
+        return $this->setCallback('removeMountFunction', $function);
+        
+    }
+    
+    /**
+     * Set a callback.
+     * $param string $callbackName
+     * @param callable[] $callbackFunction
+     * @return boolean
+     */
+    private function setCallback($callbackName,$callbackFunction){
+        if(!isset($this->$callbackName)){
+            return $this->altOnError($callbackName.' : Unknown method');
+        }
+        if(!is_callable($callbackFunction)){
+            $callbackFunctionName = (is_array($callbackFunction))?get_class($callbackFunction[0]).'::'.$callbackFunction[1]:$callbackFunction;
+            return $this->altOnError($callbackFunctionName.' : Unknown function');
+        }
+        $this->$callbackName = $callbackFunction;
         return true;
     }
     
@@ -161,11 +172,11 @@ class IcecastAuth {
         // Get datas sent with the mount url
         $parameters = array();
         $parsedUrl = parse_url($_POST['mount']);
-        parse_str($parsedUrl['query'], $parameters);
-        $parameters['mountpoint'] = $parsedUrl['path'];
+        if(isset($parsedUrl['query']))parse_str($parsedUrl['query'], $parameters);
+        if(isset($parsedUrl['path']))$parameters['mountpoint'] = $parsedUrl['path'];
         // Merge these datas with POST datas sent by icecast
         $parameters = array_merge($parameters,$_POST);
-
+        
 
         switch($parameters['action']){
             case 'listener_add': //add listener event
