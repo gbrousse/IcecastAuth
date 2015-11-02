@@ -1,4 +1,4 @@
-# IcecastAuth [![Build Status](https://travis-ci.org/gbrousse/IcecastAuth.svg?branch=master)](https://travis-ci.org/gbrousse/IcecastAuth)[![Coverage Status](https://coveralls.io/repos/gbrousse/IcecastAuth/badge.svg?branch=master&service=github)](https://coveralls.io/github/gbrousse/IcecastAuth?branch=master)
+# IcecastAuth [![Build Status](https://travis-ci.org/gbrousse/IcecastAuth.svg?branch=master)](https://travis-ci.org/gbrousse/IcecastAuth)  [![Coverage Status](https://coveralls.io/repos/gbrousse/IcecastAuth/badge.svg?branch=master&service=github)](https://coveralls.io/github/gbrousse/IcecastAuth?branch=master)
 
 [![Total Downloads](https://img.shields.io/packagist/dt/gbrousse/icecast-auth.svg)](https://packagist.org/packages/gbrousse/icecast-auth)
 [![Latest Stable Version](https://img.shields.io/packagist/v/gbrousse/icecast-auth.svg)](https://packagist.org/packages/gbrousse/icecast-auth)
