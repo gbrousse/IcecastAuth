@@ -13,7 +13,7 @@
          verbose="true">
     <testsuites>
         <testsuite name="IcecastAuth tests">
-            <directory>tests/TokenManager/</directory>
+            <directory>tests/IcecastAuth/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
